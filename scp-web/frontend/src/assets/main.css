@@ -1,0 +1,256 @@
+/* ============================================================
+   设计变量
+   ============================================================ */
+:root {
+  --primary:       #4f6ef7;
+  --primary-light: #eef0fe;
+  --success:       #67c23a;
+  --warning:       #e6a23c;
+  --danger:        #f56c6c;
+  --info:          #909399;
+
+  --bg-page:   #f0f2f7;
+  --bg-card:   #ffffff;
+  --bg-subtle: #f5f7fa;
+
+  --text-1: #1a1f36;
+  --text-2: #606266;
+  --text-3: #909399;
+  --text-4: #c0c4cc;
+
+  --border: #e4e7ed;
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   14px;
+
+  --shadow-1: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-2: 0 4px 16px rgba(0,0,0,0.09);
+  --shadow-3: 0 8px 32px rgba(0,0,0,0.12);
+
+  --transition: all 0.2s ease;
+}
+
+/* ============================================================
+   基础重置
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-1);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC',
+               'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   Element Plus 覆盖
+   ============================================================ */
+
+/* ── 卡片 ── */
+.el-card {
+  border-radius: var(--r-md) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-1) !important;
+  transition: var(--transition);
+  background: var(--bg-card) !important;
+}
+.el-card:hover {
+  box-shadow: var(--shadow-2) !important;
+}
+.el-card__header {
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--border) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  color: var(--text-1) !important;
+  background: var(--bg-subtle) !important;
+  border-radius: var(--r-md) var(--r-md) 0 0 !important;
+  /* 修复：确保 header flex 不溢出 */
+  display: flex !important;
+  align-items: center !important;
+}
+.el-card__body {
+  padding: 14px 16px !important;
+}
+
+/* ── 按钮 ── */
+.el-button {
+  border-radius: var(--r-sm) !important;
+  font-weight: 500 !important;
+  transition: var(--transition) !important;
+  /* 修复：按钮内图标和文字垂直对齐 */
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+.el-button .el-icon {
+  /* 修复：图标不继承 line-height 导致偏移 */
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+.el-button--primary {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+.el-button--primary:hover:not(:disabled) {
+  background: #3d5ce8 !important;
+  border-color: #3d5ce8 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(79,110,247,0.28) !important;
+}
+
+/* ── 菜单 ── */
+.el-menu--horizontal {
+  border-bottom: none !important;
+  background: transparent !important;
+}
+.el-menu--horizontal > .el-menu-item {
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  transition: var(--transition) !important;
+}
+.el-menu--horizontal > .el-menu-item.is-active {
+  color: var(--primary) !important;
+  border-bottom-color: var(--primary) !important;
+}
+
+/* ── 输入框 ── */
+.el-input__wrapper  { border-radius: var(--r-sm) !important; }
+.el-textarea__inner { border-radius: var(--r-sm) !important; font-size: 13px !important; }
+
+/* ── 表格 ── */
+.el-table {
+  border-radius: var(--r-sm) !important;
+  overflow: hidden;
+}
+.el-table th.el-table__cell {
+  background: var(--bg-subtle) !important;
+  color: var(--text-2) !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 8px 0 !important;
+}
+.el-table td.el-table__cell {
+  font-size: 12px !important;
+  padding: 6px 0 !important;
+}
+
+/* ── 标签 ── */
+.el-tag { border-radius: 4px !important; font-weight: 500 !important; }
+
+/* ── 分割线 ── */
+.el-divider--horizontal { margin: 12px 0 !important; border-color: var(--border) !important; }
+
+/* ── 上传 ── */
+.el-upload-dragger {
+  border-radius: var(--r-md) !important;
+  border: 2px dashed var(--border) !important;
+  background: var(--bg-subtle) !important;
+  transition: var(--transition) !important;
+  /* 修复：内容垂直居中 */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+}
+.el-upload-dragger:hover {
+  border-color: var(--primary) !important;
+  background: var(--primary-light) !important;
+}
+.el-upload__text { margin-top: 8px !important; font-size: 13px !important; }
+.el-upload__tip  { font-size: 11px !important; color: var(--text-3) !important; }
+
+/* ── 表单 ── */
+.el-form-item { margin-bottom: 12px !important; }
+.el-form-item__label {
+  font-size: 13px !important;
+  color: var(--text-2) !important;
+  /* 修复：label 右对齐对准输入框 */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding-right: 10px !important;
+}
+
+/* ── 进度条 ── */
+.el-progress-bar__outer { border-radius: 99px !important; }
+.el-progress-bar__inner { border-radius: 99px !important; }
+
+/* ── 弹窗 ── */
+.el-dialog {
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--shadow-3) !important;
+}
+.el-dialog__header {
+  padding: 16px 20px 12px !important;
+  font-weight: 600 !important;
+}
+.el-dialog__body   { padding: 16px 20px !important; }
+.el-dialog__footer { padding: 12px 20px 16px !important; }
+
+/* ── 分页 ── */
+.el-pagination {
+  font-size: 13px !important;
+}
+.el-pagination .el-pager li {
+  border-radius: var(--r-sm) !important;
+}
+
+/* ── Alert ── */
+.el-alert {
+  border-radius: var(--r-sm) !important;
+  padding: 8px 12px !important;
+}
+.el-alert__title { font-size: 13px !important; }
+.el-alert__description { font-size: 12px !important; }
+
+/* ── Select ── */
+.el-select .el-input__wrapper { border-radius: var(--r-sm) !important; }
+
+/* ── Checkbox ── */
+.el-checkbox { font-size: 13px !important; }
+
+/* ============================================================
+   通用布局工具类
+   ============================================================ */
+
+/* 卡片头部固定模式：标题 + 右侧操作 */
+.card-header {
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+.card-header span:first-child { flex: 1; min-width: 0; }
+
+/* 通用 flex 行 */
+.flex-row  { display: flex; align-items: center; gap: 8px; }
+.flex-col  { display: flex; flex-direction: column; gap: 8px; }
+.flex-wrap { flex-wrap: wrap; }
+
+/* ============================================================
+   全局动画
+   ============================================================ */
+.fade-enter-active { transition: opacity 0.28s ease, transform 0.28s ease; }
+.fade-leave-active { transition: opacity 0.18s ease; }
+.fade-enter-from   { opacity: 0; transform: translateY(6px); }
+.fade-leave-to     { opacity: 0; }
+
+/* ============================================================
+   滚动条
+   ============================================================ */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #d0d3db;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: #adb0ba; }

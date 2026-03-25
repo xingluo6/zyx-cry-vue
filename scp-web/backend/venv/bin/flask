@@ -1,0 +1,12 @@
+#!/bin/sh
+'''exec' '/Users/mac/Desktop/第四纪/同步域/第四纪-广域互联/致远星行动/拭虹行动-26/数字图像加密/zyx-cry-vue/scp-web/backend/venv/bin/python3' "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import sys
+from flask.cli import main
+if __name__ == "__main__":
+    if sys.argv[0].endswith("-script.pyw"):
+        sys.argv[0] = sys.argv[0][:-11]
+    elif sys.argv[0].endswith(".exe"):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())
